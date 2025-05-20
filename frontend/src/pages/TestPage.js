@@ -1,11 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import ConditionCard from '../components/ConditionCard';
+import React, { useState, useEffect } from "react";
+import ConditionCard from "../components/ConditionCard";
+import Sidebar from "../components/Sidebar";
 
 const TestPage = () => {
-  const [currentData, setCurrentData] = useState({ temp: 28, light: 90, humidity: 12 });
-  const [desiredData, setDesiredData] = useState({ temp: 24, light: 80, humidity: 15 });
+  const [currentData, setCurrentData] = useState({
+    temp: 28,
+    light: 90,
+    humidity: 12,
+  });
+  const [desiredData, setDesiredData] = useState({
+    temp: 24,
+    light: 80,
+    humidity: 15,
+  });
 
-  // Simulate dummy data changing every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentData({
@@ -19,11 +27,14 @@ const TestPage = () => {
   }, []);
 
   return (
-    <div className="main" style={{ padding: '20px' }}>
-      <h2>Dummy Test: Class Condition Gauges</h2>
-      <div className="cards">
-        <ConditionCard title="Current Condition" data={currentData} />
-        <ConditionCard title="Desired Condition" data={desiredData} />
+    <div className="dashboard">
+      <Sidebar active={5} />
+      <div className="main" style={{ padding: "20px" }}>
+        <h2>Dummy Test: Class Condition Gauges</h2>
+        <div className="cards">
+          <ConditionCard title="Current Condition" data={currentData} />
+          <ConditionCard title="Desired Condition" data={desiredData} />
+        </div>
       </div>
     </div>
   );
